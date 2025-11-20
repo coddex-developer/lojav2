@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CarouselComponent } from "./components/CarouselComponent";
 import { CardSimIcon, SaladIcon } from "lucide-react";
+import "../styles.min.scss"
 
 type CategoryProps = {
     icon: React.ElementType
@@ -66,11 +67,11 @@ function HomePage() {
         <>
             <CarouselComponent />
             <Card className="w-full mt-5 mx-auto min-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-4xl">
-                <CardContent className="flex flex-col gap-6">
+                <CardContent className="flex p-1 flex-col gap-6">
                     <CardTitle>
                         Navegue por categorias:
                     </CardTitle>
-                    <div className="flex overflow-x-scroll gap-3">
+                    <div className="card_category overflow-x-scroll overflow-y-hidden flex gap-3">
                         {
                             categoryList.map((category) => (
                                 <Card className="p-4 mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer rounded-full flex justify-center items-center" key={category.name}>

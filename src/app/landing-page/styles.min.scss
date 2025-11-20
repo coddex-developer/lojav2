@@ -1,0 +1,16 @@
+.card_category::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.card_category::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.card_category::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.card_category {
+    scroll-snap-type: x mandatory;
+}
