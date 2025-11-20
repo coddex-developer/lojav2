@@ -34,9 +34,9 @@ function HomePage() {
             "px-0"
           )}
         >
-          <Card className="min-h-80">
+          <Card className="min-h-80 cursor-pointer">
             <CardHeader className="relative">
-                <div className="bg-gray-950/40 backdrop-blur-md rounded-full absolute left-1 -top-4 flex items-center gap-1 py-0.5 px-2">
+                <div className="bg-black backdrop-blur-md rounded-full absolute left-1 -top-4 flex justify-center items-center gap-1 py-0.5 px-2">
                     <Image className={clsx("w-6")} src={"/fire.gif"} width={1080} height={720} alt="fire" />
                 <span className="text-xs font-bold text-white">30% OFF</span>
                 </div>
