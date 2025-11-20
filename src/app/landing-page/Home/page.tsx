@@ -73,7 +73,7 @@ function HomePage() {
                     <div className="flex overflow-x-scroll gap-3">
                         {
                             categoryList.map((category) => (
-                                <Card className="w-20 min-w-20 mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer h-20 rounded-full flex justify-center items-center" key={category.name}>
+                                <Card className="p-4 mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer rounded-full flex justify-center items-center" key={category.name}>
                                     <category.icon/>
                                 </Card>
                             ))
