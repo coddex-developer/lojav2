@@ -36,7 +36,10 @@ function HomePage() {
         >
           <Card className="min-h-80">
             <CardHeader className="relative">
-                <Image className={clsx("w-7 absolute left-1 -top-4 bg-gray-900/20 rounded-full flex justify-center items-center p-0.5")} src={"/fire.gif"} width={1080} height={720} alt="fire" />
+                <div className="bg-gray-950/40 backdrop-blur-md rounded-full absolute left-1 -top-4 flex items-center gap-1 py-0.5 px-2">
+                    <Image className={clsx("w-6")} src={"/fire.gif"} width={1080} height={720} alt="fire" />
+                <span className="text-xs font-bold text-white">30% OFF</span>
+                </div>
             </CardHeader>
           </Card>
           <Card className="min-h-80"></Card>
