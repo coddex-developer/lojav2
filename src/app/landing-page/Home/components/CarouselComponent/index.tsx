@@ -20,7 +20,7 @@ export function CarouselComponent() {
                 {Array.from({ length: 10 }).map((_, index) => (
                     <CarouselItem key={index}>
                         <div className="p-1">
-                            <Card className="bg-gray-700 h-[250px]">
+                            <Card className="bg-gray-700 h-[250px] px-0">
                                 <CardContent className="flex h-full aspect-square items-center justify-center p-6">
                                     <span className="text-4xl font-semibold">{index + 1}</span>
                                 </CardContent>
