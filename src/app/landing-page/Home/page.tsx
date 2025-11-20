@@ -66,16 +66,16 @@ function HomePage() {
     return (
         <>
             <CarouselComponent />
-            <Card className="w-full mt-5 mx-auto min-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-4xl">
-                <CardContent className="flex p-1 flex-col gap-6">
+            <Card className="w-full border-transparent shadow-transparent mt-2 mx-auto min-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-4xl">
+                <CardContent className="flex px-2 flex-col gap-6">
                     <CardTitle>
                         Navegue por categorias:
                     </CardTitle>
-                    <div className="card_category overflow-x-scroll overflow-y-hidden flex gap-3">
+                    <div className="card_category overflow-x-scroll overflow-y-hidden flex gap-2">
                         {
                             categoryList.map((category) => (
-                                <Card className="p-4  mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer rounded-full flex justify-center items-center" key={category.name}>
-                                    <category.icon className="btn_category text-red-700 w-10 h-10 **snap-center**"/>
+                                <Card className="p-2 w-full shadow-accent bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out  cursor-pointer rounded-full flex justify-center items-center" key={category.name}>
+                                    <category.icon className="btn_category w-10 h-10"/>
                                 </Card>
                             ))
                         }
