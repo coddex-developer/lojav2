@@ -5,6 +5,7 @@
 
 .card_category::-webkit-scrollbar-thumb {
     background: transparent;
+    border-radius: 10px;
 }
 
 .card_category::-webkit-scrollbar-track {
@@ -13,9 +14,8 @@
 
 .card_category {
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
 }
 
 .btn_category {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
