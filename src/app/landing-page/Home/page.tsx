@@ -74,8 +74,8 @@ function HomePage() {
                     <div className="card_category overflow-x-scroll overflow-y-hidden flex gap-3">
                         {
                             categoryList.map((category) => (
-                                <Card className="p-4 mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer rounded-full flex justify-center items-center" key={category.name}>
-                                    <category.icon/>
+                                <Card className="p-4  mx-auto bg-blue-100 hover:bg-blue-300 hover:shadow-blue-900/30 shadow-lg ease-in-out my-1.5 cursor-pointer rounded-full flex justify-center items-center" key={category.name}>
+                                    <category.icon className="btn_category text-red-700 w-10 h-10 **snap-center**"/>
                                 </Card>
                             ))
                         }

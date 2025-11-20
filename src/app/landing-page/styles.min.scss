@@ -13,4 +13,9 @@
 
 .card_category {
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.btn_category {
+    scroll-snap-align: center;
 }
