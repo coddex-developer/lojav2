@@ -18,13 +18,13 @@ export const products: ProductType[] = [
         description: "",
         inventory: { isInStock: true, stockQuantity: 30 },
         media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
-        pricing: { basePrice: 3.90, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
+        pricing: { basePrice: 3.90, isPromotional: true, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
     {
         id: 1,
-        name: "Esponjoso 1/2",
-        category: "esponjoso",
+        name: "Tubulação de cobre 1/4 para instalação",
+        category: "tubulacao-cobre",
         description: "",
         inventory: { isInStock: true, stockQuantity: 30 },
         media: { images: ["/images_products/cobre.webp"], thumbnailUrl: "" },
