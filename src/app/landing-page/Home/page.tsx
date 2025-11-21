@@ -1,3 +1,4 @@
+"use client"
 import { CarouselComponent } from "./components/CarouselComponent";
 import CategoryComponent from "./components/CategoryComponent";
 import ContainerCards from "./components/ContainerCards";
