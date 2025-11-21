@@ -1,6 +1,6 @@
 export interface ProductPricing {
     basePrice: number;
-    discountPercentage?: number;
+    discountPercentage: number;
     isPromotional: boolean;
     finalPrice?: number;
 }
