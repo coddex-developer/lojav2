@@ -1,4 +1,4 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { products } from "@/db/products";
 import clsx from "clsx";
 import Image from "next/image";
@@ -14,7 +14,7 @@ export default function CardProduct() {
         <>
             {
                 products.map(product => (
-                    <>
+                    
                         <Card key={product.id} className="min-h-80 cursor-pointer">
                             <CardHeader className="relative">
                                 {
@@ -25,7 +25,7 @@ export default function CardProduct() {
                                         </div>
                                         : ""
                                 }
-                                <Image className="w-full h-full transition-600 bg-cover bg-center" src={product.media.images[0]} width={1080} height={720} alt={product.name} />
+                                <Image className="w-full h-full transition-600 bg-cover bg-center" loading="eager" src={product.media.images[0]} width={1080} height={720} alt={product.name} />
                             </CardHeader>
                             <CardTitle className="font-semibold px-1.5 text-md">{product.name}</CardTitle>
                             <CardContent className="flex flex-col px-1.5 gap-1">
@@ -43,16 +43,14 @@ export default function CardProduct() {
                                         </p>
                                     </>
                                 ) : (
-                                    <>
-                                        <p className="text-2xl font-bold text-gray-900">
-                                            {formatCurrency(product.pricing.basePrice)}
-                                        </p>
-                                    </>
+                                    <p className="text-2xl font-bold text-gray-900">
+                                        {formatCurrency(product.pricing.basePrice)}
+                                    </p>
 
                                 )}
                             </CardContent>
                         </Card>
-                    </>
+                    
                 ))
             }
         </>

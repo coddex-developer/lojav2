@@ -12,7 +12,7 @@ export const products: ProductType[] = [
         variants: []
     },
     {
-        id: 1,
+        id: 2,
         name: "Esponjoso 3/8",
         category: "esponjoso",
         description: "",
@@ -22,7 +22,7 @@ export const products: ProductType[] = [
         variants: []
     },
     {
-        id: 1,
+        id: 3,
         name: "Tubulação de cobre 1/4 para instalação",
         category: "tubulacao-cobre",
         description: "",
