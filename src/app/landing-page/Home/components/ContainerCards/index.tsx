@@ -1,13 +1,12 @@
 import { Card, CardTitle } from "@/components/ui/card";
 import clsx from "clsx";
-import CardProduct from "../CardProduct";
 
 type ContentCardProps = {
     description: string
     children?: React.ReactNode
 }
 
-export default function ContainerCards({ description }: ContentCardProps) {
+export default function ContainerCards({ description, children }: ContentCardProps) {
     return (
         <>
             <Card
@@ -18,7 +17,9 @@ export default function ContainerCards({ description }: ContentCardProps) {
                     "sm:max-w-sm",
                     "md:max-w-md",
                     "lg:max-w-4xl",
-                    "px-2"
+                    "px-2",
+                    "mt-8",
+                    "border-0",
                 )}
             >
                 <CardTitle>{description}</CardTitle>
@@ -35,7 +36,7 @@ export default function ContainerCards({ description }: ContentCardProps) {
                         "px-0"
                     )}
                 >
-                    <CardProduct />
+                    {children}
                 </Card>
             </Card>
         </>
