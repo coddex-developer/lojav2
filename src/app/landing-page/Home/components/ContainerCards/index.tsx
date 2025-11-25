@@ -1,12 +1,14 @@
 import { Card, CardTitle } from "@/components/ui/card";
 import clsx from "clsx";
+import { Tag } from "lucide-react";
 
 type ContentCardProps = {
     description: string
+    icon?: React.ReactElement
     children: React.ReactNode
 }
 
-export default function ContainerCards({ description, children }: ContentCardProps) {
+export default function ContainerCards({ description, icon, children }: ContentCardProps) {
     return (
         <>
             <Card
@@ -21,7 +23,7 @@ export default function ContainerCards({ description, children }: ContentCardPro
                     "mt-8",
                 )}
             >
-                <CardTitle>{description}</CardTitle>
+                <CardTitle className="text-lg font-bold flex gap-2 items-center">{icon} {description}</CardTitle>
                 <Card
                     className={clsx(
                         "grid",
@@ -34,7 +36,7 @@ export default function ContainerCards({ description, children }: ContentCardPro
                         "border-0",
                         "px-0"
                     )}
-                >
+                >                   
                     {children}
                 </Card>
             </Card>
