@@ -8,7 +8,7 @@ export const products: ProductType[] = [
         description: "",
         inventory: { isInStock: true, stockQuantity: 30 },
         media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
-        pricing: { basePrice: 3.90, isPromotional: false, discountPercentage: 5, finalPrice: 0 },
+        pricing: { basePrice: 3.50, isPromotional: false, discountPercentage: 0, finalPrice: 0 },
         variants: []
     },
     {
@@ -18,7 +18,7 @@ export const products: ProductType[] = [
         description: "",
         inventory: { isInStock: true, stockQuantity: 30 },
         media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
-        pricing: { basePrice: 3.90, isPromotional: true, discountPercentage: 10, finalPrice: 0 },
+        pricing: { basePrice: 39.90, isPromotional: true, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
     {
