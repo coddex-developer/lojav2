@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 type ContentCardProps = {
     description: string
-    children?: React.ReactNode
+    children: React.ReactNode
 }
 
 export default function ContainerCards({ description, children }: ContentCardProps) {
@@ -19,7 +19,6 @@ export default function ContainerCards({ description, children }: ContentCardPro
                     "lg:max-w-4xl",
                     "px-2",
                     "mt-8",
-                    "border-0",
                 )}
             >
                 <CardTitle>{description}</CardTitle>
@@ -32,7 +31,7 @@ export default function ContainerCards({ description, children }: ContentCardPro
                         "md:grid-cols-3",
                         "lg:grid-cols-4",
                         "shadow-transparent",
-                        "border-transparent",
+                        "border-0",
                         "px-0"
                     )}
                 >
