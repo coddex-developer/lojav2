@@ -2,16 +2,17 @@
 import { products } from "@/db/products"
 import { useParams } from "next/navigation"
 import CardProduct from "../../home/components/CardProduct"
-import { Card, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Share2 } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 export default function Page() {
     const { id } = useParams()
     if (!id) return null
     const product = products.find(item => item.id === +id)
     if (!product) return null
-    const shareUrl = () => { 
+    const shareUrl = () => {
         alert("Copiado com sucesso!")
         navigator.clipboard.writeText("http://lojav2.vercel.app/p/" + id)
     }
@@ -34,6 +35,32 @@ export default function Page() {
                         </>
                     } />
 
+            </Card>
+
+            <Card className="flex justify-center relative border-0 shadow-transparent mt-10 mx-2 bg-gray-50">
+                <h2 className="ml-4 md:text-center font-semibold">As pessoas também procuram:</h2>
+                <Carousel
+                    opts={{
+                        align: "start",
+                    }}
+                    className="w-full max-w-sm mx-auto"
+                >
+                    <CarouselContent>
+                        {Array.from({ length: 5 }).map((_, index) => (
+                            <CarouselItem key={index} className="basis-1/3">
+                                <div className="p-1">
+                                    <Card>
+                                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                                            <span className="text-3xl font-semibold">{index + 1}</span>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
             </Card>
         </>
     )
