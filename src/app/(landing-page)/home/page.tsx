@@ -1,12 +1,12 @@
 "use client";
 import { products } from "@/db/products";
-import CardProduct from "./components/CardProduct";
-import { CarouselComponent } from "./components/CarouselComponent";
-import CategoryComponent from "./components/CategoryComponent";
-import ContainerCards from "./components/ContainerCards";
 import Link from "next/link";
 import { ProductType } from "@/db/ProductType";
 import { BadgePercent, Tag } from "lucide-react";
+import { CarouselComponent } from "./components/CarouselComponent";
+import CategoryComponent from "./components/CategoryComponent";
+import ContainerCards from "./components/ContainerCards";
+import CardProduct from "./components/CardProduct";
 
 function HomePage() {
 
@@ -52,7 +52,7 @@ return (
 
         {items.map((product) => (
           product.pricing.isPromotional === false ?
-            <Link key={product.id} href={product.name.replace(" ", "")}>
+            <Link key={product.id} href={"p/"+product.id.toString()}>
               <CardProduct
                 name={product.name}
                 id={product.id}

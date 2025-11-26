@@ -7,10 +7,11 @@ type CardType =  {
   id: string | number,
   name: string,
   pricing: ProductPricing,
-  media: ProductMedia
+  media: ProductMedia,
+  props?: React.ReactNode
 }
 
-export default function CardProduct({ id, name, pricing, media }: CardType) {
+export default function CardProduct({ id, name, pricing, media, props }: CardType) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -25,7 +26,6 @@ export default function CardProduct({ id, name, pricing, media }: CardType) {
           "min-h-80",
           "cursor-pointer",
           "hover:shadow-xl",
-          "lg:hover:scale-105",
           "transition-all",
           "ease-in-out"
         )}
@@ -96,6 +96,7 @@ export default function CardProduct({ id, name, pricing, media }: CardType) {
             </p>
           )}
         </CardContent>
+        {props}
       </Card>
     </>
   );
