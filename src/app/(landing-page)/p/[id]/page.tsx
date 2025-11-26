@@ -20,8 +20,11 @@ export default function Page() {
                     pricing={product.pricing}
                     key={product.id} props={
                         <>
+                        <Card className="px-2 py-1 border-b-0 shadow-transparent">
+                            <span className="text-sm text-gray-500 mt-1">Em estoque: {product.inventory.stockQuantity}</span>
                             <CardDescription>{ product.description }</CardDescription>
                             <Button className="cursor-pointer">Adicionar ao carrinho</Button>
+                        </Card>
                         </>
                     } />
 
