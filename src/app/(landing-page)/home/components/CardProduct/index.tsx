@@ -27,7 +27,8 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
           "cursor-pointer",
           "hover:shadow-xl",
           "transition-all",
-          "ease-in-out"
+          "ease-in-out",
+          "relative"
         )}
       >
         <CardHeader className="relative">
