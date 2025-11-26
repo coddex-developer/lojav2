@@ -58,8 +58,8 @@ export default function Page() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="display-none md:flex" />
+                    <CarouselNext className="display-none md:flex" />
                 </Carousel>
             </Card>
         </>
