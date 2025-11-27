@@ -1,8 +1,8 @@
 "use client"
-import { products, ProductType } from "@/db/products"
+import { products } from "@/db/products"
 import { useParams } from "next/navigation"
 import CardProduct from "../../home/components/CardProduct"
-import { Card, CardContent, CardDescription } from "@/components/ui/card"
+import { Card, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Share2, ShoppingCart } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
@@ -10,6 +10,7 @@ import Image from "next/image"
 import { useState, useEffect } from 'react'; // Adicionei useEffect para garantir atualização ao mudar de produto
 import clsx from 'clsx';
 import Link from "next/link";
+import { ProductType } from "@/db/ProductType"
 
 // Função utilitária para pegar N produtos aleatórios
 const getRandomProducts = (allProducts: ProductType[], currentProductId: number | string, count: number): ProductType[] => {
@@ -41,8 +42,8 @@ export default function Page() {
     // useEffect: Se o usuário mudar de página (/p/1 para /p/2), atualizamos o estado
     useEffect(() => {
         if (product) {
-            setSelectedImage(product.media.images[0]);
-            setSelectedVariant(product.variants && product.variants.length > 0 ? product.variants[0] : null);
+            setSelectedImage(product?.media?.images?.[0]);
+            setSelectedVariant(product?.variants && product.variants.length > 0 ? product.variants[0] : null);
         }
     }, [product]);
 
@@ -205,7 +206,6 @@ export default function Page() {
                             <h3 className="font-semibold text-gray-800">Detalhes Técnicos</h3>
                             <ul className="text-sm text-gray-600 list-disc ml-4">
                                 <li><strong>Categoria:</strong> {product.category}</li>
-                                <li><strong>Fabricante:</strong> {product.manufacturer}</li>
                             </ul>
                         </Card>
                     </div>
