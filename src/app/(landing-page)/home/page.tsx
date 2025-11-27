@@ -33,7 +33,7 @@ return (
 
       {products.map((product) =>
         product.pricing.isPromotional ? (
-          <Link key={product.id} href={product.name.replace(" ", "")}>
+          <Link key={product.id} href={"/p/"+product.id.toString()}>
             <CardProduct
               name={product.name}
               id={product.id}

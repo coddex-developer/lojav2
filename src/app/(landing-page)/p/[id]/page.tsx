@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Share2, ShoppingCart } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
-import { useState, useEffect } from 'react'; // Adicionei useEffect para garantir atualização ao mudar de produto
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Link from "next/link";
 import { ProductType } from "@/db/ProductType"
@@ -114,11 +114,34 @@ export default function Page() {
                         
                         <div className="relative flex-1 h-80 md:h-96 rounded-lg overflow-hidden shadow-md">
                             {product.pricing.isPromotional && (
-                                <div className="absolute top-3 left-3 bg-red-600 rounded-lg z-10 px-3 py-1 shadow-lg">
-                                    <span className="text-sm font-extrabold text-white tracking-wider">
-                                        -{product.pricing.discountPercentage}% OFF
-                                    </span>
-                                </div>
+                                <div
+                                              className={clsx(
+                                                "bg-gray-950/60",
+                                                "backdrop-blur-md",
+                                                "z-1",
+                                                "rounded-full",
+                                                "absolute",
+                                                "left-1",
+                                                "top-4",
+                                                "flex",
+                                                "justify-center",
+                                                "items-center",
+                                                "gap-1",
+                                                "py-0.5",
+                                                "px-2"
+                                              )}
+                                            >
+                                              <Image
+                                                className={clsx("w-6")}
+                                                src={"/fire.gif"}
+                                                width={1080}
+                                                height={720}
+                                                alt="fire"
+                                              />
+                                              <span className="text-xs font-bold text-white">
+                                                {product.pricing.discountPercentage}% OFF
+                                              </span>
+                                            </div>
                             )}
                             <Image
                                 src={displayImage}
