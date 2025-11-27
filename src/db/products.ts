@@ -20,7 +20,7 @@ export const products: ProductType[] = [
         category: categoryEsponjoso,
         description: "Isolante térmico flexível ideal para tubulação de 1/4, reduz perdas de energia e evita condensação.",
         inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
+        media: { images: ["/images_products/esponjosoweb.jpg", "/images_products/esponjosoweb2.jpg", "/images_products/esponjosoweb3.webp"], thumbnailUrl: "" },
         pricing: { basePrice: 3.50, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
@@ -30,7 +30,7 @@ export const products: ProductType[] = [
         category: categoryEsponjoso,
         description: "Isolamento flexível para tubulação de 3/8, protege contra suor e melhora a eficiência do sistema.",
         inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
+        media: { images: ["/images_products/esponjosoweb.jpg", "/images_products/esponjosoweb2.jpg", "/images_products/esponjosoweb3.webp"], thumbnailUrl: "" },
         pricing: { basePrice: 3.80, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
@@ -40,7 +40,7 @@ export const products: ProductType[] = [
         category: categoryEsponjoso,
         description: "Isolamento térmico para tubulação de 1/2, resistente e com excelente vedação contra condensação.",
         inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
+        media: { images: ["/images_products/esponjosoweb.jpg", "/images_products/esponjosoweb2.jpg", "/images_products/esponjosoweb3.webp"], thumbnailUrl: "" },
         pricing: { basePrice: 4.50, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
@@ -50,7 +50,7 @@ export const products: ProductType[] = [
         category: categoryEsponjoso,
         description: "Ideal para tubulação de 5/8, garantindo isolamento de qualidade e maior durabilidade do sistema.",
         inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
+        media: { images: ["/images_products/esponjosoweb.jpg", "/images_products/esponjosoweb2.jpg", "/images_products/esponjosoweb3.webp"], thumbnailUrl: "" },
         pricing: { basePrice: 4.50, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
@@ -60,7 +60,7 @@ export const products: ProductType[] = [
         category: categoryEsponjoso,
         description: "Isolante robusto para tubulação de 3/4, ideal para instalações residenciais e comerciais.",
         inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/esponjosoweb.jpg"], thumbnailUrl: "" },
+        media: { images: ["/images_products/esponjosoweb.jpg", "/images_products/esponjosoweb2.jpg", "/images_products/esponjosoweb3.webp"], thumbnailUrl: "" },
         pricing: { basePrice: 6.00, isPromotional: false, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
