@@ -3,7 +3,7 @@ import { ProductMedia, ProductPricing } from "@/db/ProductType";
 import clsx from "clsx";
 import Image from "next/image";
 
-type CardType = {
+type CardType =  {
   id: string | number,
   name: string,
   pricing: ProductPricing,
@@ -18,11 +18,6 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
       currency: "BRL",
     }).format(value);
   };
-  
-  const finalPrice = pricing.isPromotional
-    ? pricing.basePrice * (1 - pricing.discountPercentage / 100)
-    : pricing.basePrice;
-
   return (
     <>
       <Card
@@ -30,87 +25,79 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
         className={clsx(
           "min-h-80",
           "cursor-pointer",
-          "hover:shadow-2xl", // Sombra mais proeminente no hover
-          "hover:scale-[1.03]", // Efeito de zoom leve e elegante
+          "hover:shadow-xl",
           "transition-all",
-          "duration-300", // Aumenta a duração da transição para suavizar
           "ease-in-out",
-          "relative",
-          "group", // Adiciona a classe 'group' para interações complexas
-          "p-0", // Remove o padding padrão do Card (se houver) para controle total
+          "relative"
         )}
       >
-        {/*
-          1. ETIQUETA DE PROMOÇÃO: Posicionamento no canto superior direito para destaque.
-          2. IMAGEM: Uso de 'fill' e 'rounded-t' no pai.
-        */}
-        <div className="relative w-full h-[200px] overflow-hidden rounded-t-lg">
-          {/* Fundo escuro sutil no hover para destacar a imagem */}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300 z-10" />
-
-          <Image
-            className="object-cover transition-all duration-500 group-hover:scale-105" // Animação de zoom na imagem ao passar o mouse
-            src={media.images[0]}
-            alt={name}
-            fill={true} // Usando 'fill' para otimizar com Next.js
-            loading="eager"
-          />
-
-          {pricing.isPromotional && (
+        <CardHeader className="relative">
+          {pricing.isPromotional ? (
             <div
               className={clsx(
+                "bg-gray-950/60",
+                "backdrop-blur-md",
+                "z-1",
+                "rounded-full",
                 "absolute",
-                "top-3",
-                "right-3",
-                "bg-red-600", // Cor mais chamativa para promoção
-                "rounded-lg",
-                "z-20", // Garante que fique sobre a imagem
-                "px-2",
-                "py-1",
-                "shadow-md"
+                "left-1",
+                "-top-4",
+                "flex",
+                "justify-center",
+                "items-center",
+                "gap-1",
+                "py-0.5",
+                "px-2"
               )}
             >
-              <span className="text-sm font-extrabold text-white tracking-wider">
-                -{pricing.discountPercentage}% OFF
+              <Image
+                className={clsx("w-6")}
+                src={"/fire.gif"}
+                width={1080}
+                height={720}
+                alt="fire"
+              />
+              <span className="text-xs font-bold text-white">
+                {pricing.discountPercentage}% OFF
               </span>
             </div>
+          ) : (
+            ""
           )}
-        </div>
-        
-        {/*
-          3. CONTEÚDO E PREÇO: Usando p-4 para padding interno consistente.
-        */}
-        <div className="p-4 flex flex-col gap-2">
-          <CardTitle className="font-bold text-lg leading-tight line-clamp-2 min-h-[2.5rem]">
-            {name}
-          </CardTitle>
-
-          <CardContent className="flex flex-col p-0 gap-1">
-            {pricing.isPromotional ? (
-              <>
-                {/* Preço de referência: Menor e com cor mais clara */}
-                <span className="text-sm text-gray-400 line-through">
-                  {formatCurrency(pricing.basePrice)}
-                </span>
-                
-                {/* Preço de promoção: Destacado, maior e em cor de destaque */}
-                <p className="text-3xl font-extrabold text-red-600 flex items-baseline">
-                  {formatCurrency(finalPrice)}
-                  <span className="text-sm font-semibold ml-1 text-gray-700">à vista</span>
-                </p>
-                {/* Parcela (opcional, mas comum para e-commerce) */}
-                <p className="text-xs text-gray-600 mt-0.5">
-                    ou em até 10x de {formatCurrency(finalPrice / 10)} sem juros
-                </p>
-              </>
-            ) : (
-              <p className="text-3xl font-extrabold text-gray-900">
+          <Image
+            className="w-full h-full transition-600 bg-cover bg-center"
+            src={media.images[0]}
+            width={1080}
+            height={720}
+            loading="eager"
+            alt={name}
+          />
+        </CardHeader>
+        <CardTitle className="font-semibold px-1.5 text-md">
+          {name}
+        </CardTitle>
+        <CardContent className="flex flex-col px-1.5 gap-1">
+          {pricing.isPromotional ? (
+            <>
+              <span className="text-sm text-gray-500 line-through">
                 {formatCurrency(pricing.basePrice)}
+              </span>
+
+              <p className="text-2xl font-bold text-green-600">
+                {formatCurrency(
+                  pricing.basePrice *
+                  (1 - pricing.discountPercentage / 100)
+                )}
+                <span className="text-xs">no Pix</span>
               </p>
-            )}
-          </CardContent>
-          {props}
-        </div>
+            </>
+          ) : (
+            <p className="text-2xl font-bold text-gray-900">
+              {formatCurrency(pricing.basePrice)}
+            </p>
+          )}
+        </CardContent>
+        {props}
       </Card>
     </>
   );
