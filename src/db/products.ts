@@ -73,7 +73,7 @@ export const products: ProductType[] = [
         description: "Válvula de serviço de cobre 1/4, utilizada para manutenção e carga de gás em sistemas de refrigeração.",
         inventory: { isInStock: true, stockQuantity: 30 },
         media: { images: ["/images_products/servico.webp"], thumbnailUrl: "" },
-        pricing: { basePrice: 45.00, isPromotional: false, discountPercentage: 3, finalPrice: 0 },
+        pricing: { basePrice: 45.00, isPromotional: true, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
     {
@@ -199,7 +199,7 @@ export const products: ProductType[] = [
         description: "Par de suportes longos de 500mm, indicados para condensadoras maiores que exigem maior distanciamento da parede.",
         inventory: { isInStock: true, stockQuantity: 20 },
         media: { images: ["/images_products/suporte-cond-eos.webp"], thumbnailUrl: "" },
-        pricing: { basePrice: 55.00, isPromotional: false, discountPercentage: 0, finalPrice: 0 },
+        pricing: { basePrice: 55.00, isPromotional: true, discountPercentage: 5, finalPrice: 0 },
         variants: []
     },
     {
@@ -271,7 +271,7 @@ export const products: ProductType[] = [
         description: "Cilindro descartável de Gás R22 com 800g, para manutenção de sistemas mais antigos.",
         inventory: { isInStock: true, stockQuantity: 15 },
         media: { images: ["/images_products/gasR22.avif"], thumbnailUrl: "" },
-        pricing: { basePrice: 120.00, isPromotional: false, discountPercentage: 0, finalPrice: 0 },
+        pricing: { basePrice: 120.00, isPromotional: true, discountPercentage: 10, finalPrice: 0 },
         variants: []
     },
 
@@ -369,7 +369,7 @@ export const products: ProductType[] = [
         description: "Sachê de graxa branca para lubrificação de componentes mecânicos e proteção contra oxidação.",
         inventory: { isInStock: true, stockQuantity: 60 },
         media: { images: ["/images_products/graxa-branca-80g.jpg"], thumbnailUrl: "" },
-        pricing: { basePrice: 6.00, isPromotional: false, discountPercentage: 0, finalPrice: 0 },
+        pricing: { basePrice: 6.00, isPromotional: true, discountPercentage: 2, finalPrice: 0 },
         variants: []
     },
 

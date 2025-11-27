@@ -3,6 +3,8 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { CardSimIcon, SaladIcon } from "lucide-react";
 import "./styles.min.scss";
 import clsx from "clsx";
+import { products } from "@/db/products";
+import { ProductType } from "@/db/ProductType";
 
 export type CategoryProps = {
     icon: React.ElementType;
@@ -10,59 +12,20 @@ export type CategoryProps = {
 };
 
 export default function CategoryComponent() {
+    const productCategory = products.reduce((acc: Record<string, ProductType[]>, item: ProductType)=>{
+        const category = item.category
+        if (!acc[category]) {
+            acc[category] = []
+        }
+        acc[category].push(item)
+        return acc
+    }, {} as Record<string, ProductType[]>)
+
     const categoryList: CategoryProps[] = [
         {
             icon: CardSimIcon,
             name: "card1",
-        },
-        {
-            icon: SaladIcon,
-            name: "card2",
-        },
-        {
-            icon: CardSimIcon,
-            name: "card13",
-        },
-        {
-            icon: SaladIcon,
-            name: "card233",
-        },
-        {
-            icon: CardSimIcon,
-            name: "card1333",
-        },
-        {
-            icon: SaladIcon,
-            name: "card23333",
-        },
-        {
-            icon: CardSimIcon,
-            name: "card133333",
-        },
-        {
-            icon: SaladIcon,
-            name: "card23333333",
-        },
-        {
-            icon: SaladIcon,
-            name: "card22222",
-        },
-        {
-            icon: CardSimIcon,
-            name: "card22221",
-        },
-        {
-            icon: SaladIcon,
-            name: "card2222233",
-        },
-        {
-            icon: CardSimIcon,
-            name: "card12223342",
-        },
-        {
-            icon: SaladIcon,
-            name: "card2777",
-        },
+        }
     ];
 
     return (
@@ -83,7 +46,7 @@ export default function CategoryComponent() {
                             <Card
                                 className={clsx(
                                     "p-2",
-                                    "w-full",
+                                    "w-15",
                                     "shadow-accent",
                                     "bg-blue-100",
                                     "hover:bg-blue-300",
