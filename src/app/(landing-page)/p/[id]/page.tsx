@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Share2, ShoppingCart } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Adicionei useEffect para garantir atualização ao mudar de produto
 import clsx from 'clsx';
-import Link from "next/link"; // <--- 1. IMPORTAÇÃO ADICIONADA AQUI
+import Link from "next/link";
 
 // Função utilitária para pegar N produtos aleatórios
 const getRandomProducts = (allProducts: ProductType[], currentProductId: number | string, count: number): ProductType[] => {
+    // Se o ID não for válido, retorna lista vazia para evitar erro
+    if (!currentProductId) return [];
+    
     const availableProducts = allProducts.filter(p => p.id !== +currentProductId);
     for (let i = availableProducts.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -23,25 +26,36 @@ const getRandomProducts = (allProducts: ProductType[], currentProductId: number 
 
 export default function Page() {
     const { id } = useParams();
+    
+    // 1. Calcular os dados BÁSICOS primeiro (sem retornar nada ainda)
     const productId = id ? +id : null;
-
-    if (!productId) return null;
-
     const product = products.find(item => item.id === productId);
 
-    if (!product) return (
-        <div className="text-center mt-20 text-xl font-bold text-gray-700">
-            Produto não encontrado.
-        </div>
-    );
-
-    // Estados
-    const [selectedImage, setSelectedImage] = useState(product.media.images[0]);
-    // Inicializa a variante apenas se existir
+    // 2. Declarar HOOKS incondicionalmente (Sempre são chamados, independente se existe produto ou não)
+    // Usamos o operador ?. (optional chaining) para evitar erro se product for undefined
+    const [selectedImage, setSelectedImage] = useState<string | undefined>(product?.media?.images?.[0]);
     const [selectedVariant, setSelectedVariant] = useState(
-        product.variants && product.variants.length > 0 ? product.variants[0] : null
+        product?.variants && product.variants.length > 0 ? product.variants[0] : null
     );
 
+    // useEffect: Se o usuário mudar de página (/p/1 para /p/2), atualizamos o estado
+    useEffect(() => {
+        if (product) {
+            setSelectedImage(product.media.images[0]);
+            setSelectedVariant(product.variants && product.variants.length > 0 ? product.variants[0] : null);
+        }
+    }, [product]);
+
+    // 3. AGORA sim podemos fazer os "Early Returns" (Retornos antecipados)
+    if (!productId || !product) {
+        return (
+            <div className="text-center mt-20 text-xl font-bold text-gray-700">
+                Produto não encontrado.
+            </div>
+        );
+    }
+
+    // 4. Lógica restante (só executa se o produto existir)
     const randomProducts = getRandomProducts(products, productId, 6);
 
     const shareUrl = () => {
@@ -60,9 +74,11 @@ export default function Page() {
         ? product.pricing.basePrice * (1 - product.pricing.discountPercentage / 100)
         : product.pricing.basePrice;
 
-    // Lógica de estoque (Variante ou Produto Principal)
     const currentStock = selectedVariant ? selectedVariant.stockQuantity : product.inventory.stockQuantity;
     const isOutOfStock = currentStock === 0;
+
+    // Garantir que selectedImage tenha valor (fallback para a primeira imagem se o estado falhar)
+    const displayImage = selectedImage || product.media.images[0];
 
     return (
         <div className="bg-gray-50 min-h-screen pt-10">
@@ -79,7 +95,7 @@ export default function Page() {
                                         key={index}
                                         className={clsx(
                                             "relative w-16 h-16 rounded-md overflow-hidden cursor-pointer border-2 transition-colors flex-shrink-0",
-                                            img === selectedImage ? "border-blue-600 shadow-md" : "border-gray-200 hover:border-blue-300"
+                                            img === displayImage ? "border-blue-600 shadow-md" : "border-gray-200 hover:border-blue-300"
                                         )}
                                         onClick={() => setSelectedImage(img)}
                                     >
@@ -104,7 +120,7 @@ export default function Page() {
                                 </div>
                             )}
                             <Image
-                                src={selectedImage}
+                                src={displayImage}
                                 alt={product.name}
                                 fill={true}
                                 className="object-contain bg-white p-2"
@@ -189,6 +205,7 @@ export default function Page() {
                             <h3 className="font-semibold text-gray-800">Detalhes Técnicos</h3>
                             <ul className="text-sm text-gray-600 list-disc ml-4">
                                 <li><strong>Categoria:</strong> {product.category}</li>
+                                <li><strong>Fabricante:</strong> {product.manufacturer}</li>
                             </ul>
                         </Card>
                     </div>
@@ -212,7 +229,6 @@ export default function Page() {
                         <CarouselContent className="-ml-4">
                             {randomProducts.map((p) => (
                                 <CarouselItem key={p.id} className="pl-4 basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                                    {/* --- 2. ENVOLVIDO COM O LINK AQUI --- */}
                                     <Link href={`/p/${p.id}`} className="block h-full select-none" draggable={false}>
                                         <CardProduct
                                             id={p.id}
@@ -221,7 +237,6 @@ export default function Page() {
                                             pricing={p.pricing}
                                         />
                                     </Link>
-                                    {/* ------------------------------------ */}
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
