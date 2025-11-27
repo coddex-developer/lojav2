@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppSidebar from "./fragments/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,19 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-gray-50 dark:bg-gray-950 antialiased p-3 w-full`}
-      >
+    <html lang="pt-BR">
+      <body className="..."> {/* Suas classes do body */}
         <SidebarProvider>
+          {/* A Sidebar fica aqui */}
           <AppSidebar />
-          <main className="flex flex-col w-full h-screen">
-            <SidebarTrigger className="bg-gray-600 hover:bg-gray-500 hover:text-white text-white cursor-pointer" />
-            {children}
-          </main>
+          
+          {/* O Conteúdo do site fica aqui dentro do Inset */}
+          <SidebarInset>
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 bg-white sticky top-0 z-100">
+              <SidebarTrigger className="-ml-1" /> {/* Botão Abre/Fecha Mobile e Desktop */}
+              <div className="w-[1px] h-4 bg-gray-200 mx-2" /> {/* Separador Vertical */}
+              <h2 className="text-sm font-semibold text-gray-700">Dashboard</h2>
+            </header>
+            
+            <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
+               {children}
+            </main>
+          </SidebarInset>
         </SidebarProvider>
       </body>
-
     </html>
   );
 }
