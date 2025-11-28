@@ -3,21 +3,35 @@ import { ProductMedia, ProductPricing } from "@/db/ProductType";
 import clsx from "clsx";
 import Image from "next/image";
 
-type CardType =  {
-  id: string | number,
-  name: string,
-  pricing: ProductPricing,
-  media: ProductMedia,
-  props?: React.ReactNode
-}
+// 1. Adicionei 'description' na tipagem
+type CardType = {
+  id: string | number;
+  name: string;
+  description: string; // Nova propriedade
+  pricing: ProductPricing;
+  media: ProductMedia;
+  props?: React.ReactNode;
+};
 
-export default function CardProduct({ id, name, pricing, media, props }: CardType) {
+// 2. Adicionei 'description' na desestruturação das props
+export default function CardProduct({
+  id,
+  name,
+  description, 
+  pricing,
+  media,
+  props,
+}: CardType) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
     }).format(value);
   };
+
+  // Cálculo do preço com desconto (movido para variável para limpar o JSX)
+  const priceWithDiscount = pricing.basePrice * (1 - pricing.discountPercentage / 100);
+
   return (
     <>
       <Card
@@ -27,6 +41,7 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
           "cursor-pointer",
           "hover:shadow-xl",
           "transition-all",
+          "duration-600", // Apliquei a transição de 600ms que você pediu antes
           "ease-in-out",
           "py-3",
           "relative"
@@ -66,7 +81,7 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
             ""
           )}
           <Image
-            className="w-full max-h-[130px]  md:max-h-[180] object-contain bg-center"
+            className="w-full max-h-[130px] md:max-h-[180] object-contain bg-center"
             src={media.images[0]}
             width={1080}
             height={720}
@@ -74,10 +89,20 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
             alt={name}
           />
         </CardHeader>
-        <CardTitle className="font-semibold px-1.5 text-md">
-          {name}
-        </CardTitle>
-        <CardContent className="flex flex-col px-1.5 gap-1">
+
+        {/* Bloco de Informações do Produto */}
+        <div className="flex flex-col gap-1 px-1.5">
+          <CardTitle className="font-semibold text-md leading-tight">
+            {name}
+          </CardTitle>
+          
+          {/* 3. Renderização da Descrição */}
+          <p className="text-xs text-gray-500 line-clamp-2 min-h-[2.5em]">
+            {description}
+          </p>
+        </div>
+
+        <CardContent className="flex flex-col px-1.5 gap-1 mt-auto">
           {pricing.isPromotional ? (
             <>
               <span className="text-sm text-gray-500 line-through">
@@ -85,11 +110,8 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
               </span>
 
               <p className="text-2xl font-bold text-green-600">
-                {formatCurrency(
-                  pricing.basePrice *
-                  (1 - pricing.discountPercentage / 100)
-                )}
-                <span className="text-xs">no Pix</span>
+                {formatCurrency(priceWithDiscount)}
+                <span className="text-xs ml-1 font-normal text-gray-600">no Pix</span>
               </p>
             </>
           ) : (
