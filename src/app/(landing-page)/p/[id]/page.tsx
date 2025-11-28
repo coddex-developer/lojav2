@@ -11,8 +11,8 @@ import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Link from "next/link";
 import { ProductType } from "@/db/ProductType"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
-
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
+import { Bounce, toast } from 'react-toastify'
 // Função utilitária para pegar N produtos aleatórios
 const getRandomProducts = (allProducts: ProductType[], currentProductId: number | string, count: number): ProductType[] => {
     // Se o ID não for válido, retorna lista vazia para evitar erro
@@ -61,8 +61,18 @@ export default function Page() {
     const randomProducts = getRandomProducts(products, productId, 6);
 
     const shareUrl = () => {
-        alert("Link do produto copiado com sucesso!");
         navigator.clipboard.writeText(`${window.location.origin}/p/${id}`);
+        toast.success('Link do produto copiado com sucesso!', {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     };
 
     const formatCurrency = (value: number) => {
