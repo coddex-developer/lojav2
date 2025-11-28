@@ -263,8 +263,8 @@ export default function Page() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 hidden md:flex" />
-                        <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden md:flex" />
+                        <CarouselPrevious className="absolute cursor-poiner -left-6 top-1/2 transform -translate-y-1/2 hidden md:flex" />
+                        <CarouselNext className="absolute cursor-poiner -right-6 top-1/2 transform -translate-y-1/2 hidden md:flex" />
                     </Carousel>
                 </div>
             )}
