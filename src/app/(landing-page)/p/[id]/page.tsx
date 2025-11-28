@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import Link from "next/link";
 import { ProductType } from "@/db/ProductType"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
-import { Bounce, toast } from 'react-toastify'
+import { Bounce, toast, ToastContainer } from 'react-toastify'
 // Função utilitária para pegar N produtos aleatórios
 const getRandomProducts = (allProducts: ProductType[], currentProductId: number | string, count: number): ProductType[] => {
     // Se o ID não for válido, retorna lista vazia para evitar erro
@@ -292,6 +292,19 @@ export default function Page() {
                     </div>
                 )}
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
         </>
     );
 }
