@@ -1,9 +1,9 @@
 "use client"
 import { products } from "@/db/products"
+import Button from '@mui/material/Button'
 import { useParams } from "next/navigation"
 import CardProduct from "../../home/components/CardProduct"
 import { Card, CardDescription } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Share2, ShoppingCart } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
@@ -212,8 +212,9 @@ export default function Page() {
                                     <div className="flex gap-2 flex-wrap">
                                         {product.variants.map(variant => (
                                             <Button
+                                            
                                                 key={variant.id}
-                                                variant={selectedVariant?.id === variant.id ? "default" : "outline"}
+                                                variant={selectedVariant?.id === variant.id ? "contained" : "outlined"}
                                                 onClick={() => setSelectedVariant(variant)}
                                                 className={clsx(
                                                     "transition-all",
@@ -241,7 +242,9 @@ export default function Page() {
                                     </span>
                                 </span>
                                 <Button
-                                    className="w-full flex-1 text-lg py-2 md:py-5 lg:py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer"
+                                    variant="contained"
+                                    size="large"
+                                    className="w-full flex-1 text-lg py-2 md:py-5 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer"
                                     disabled={isOutOfStock}
                                 >
                                     <ShoppingCart className="mr-2 h-5 w-5" /> {isOutOfStock ? "Esgotado" : "Adicionar ao Carrinho"}

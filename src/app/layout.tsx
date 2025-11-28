@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import AppSidebar from "./fragments/AppSidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import Footer from "./fragments/Footer";
 
 const geisNunito = Nunito({
   variable: "--font-nunito",
@@ -32,7 +33,6 @@ export default function RootLayout({
           </main>
         </SidebarProvider>
       </body>
-
     </html>
   );
 }
