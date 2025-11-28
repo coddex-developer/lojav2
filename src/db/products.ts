@@ -372,16 +372,4 @@ export const products: ProductType[] = [
         pricing: { basePrice: 6.00, isPromotional: false, discountPercentage: 2, finalPrice: 0 },
         variants: []
     },
-
-    /* --- EXTRA (DO SEU EXEMPLO) --- */
-    {
-        id: 300000000,
-        name: "Tubulação de Cobre 1/4 para Instalação",
-        category: categoryCobre,
-        description: "Tubulação de cobre 1/4 para instalação de ar condicionado, ideal para setups domésticos e comerciais.",
-        inventory: { isInStock: true, stockQuantity: 30 },
-        media: { images: ["/images_products/cobre.webp"], thumbnailUrl: "" },
-        pricing: { basePrice: 30.90, isPromotional: false, discountPercentage: 3, finalPrice: 0 },
-        variants: []
-    },
 ];
