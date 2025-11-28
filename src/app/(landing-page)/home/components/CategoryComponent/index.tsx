@@ -28,7 +28,7 @@ export default function CategoryComponent() {
 
   return (
     <>
-      <Card className="grid grid-cols-4 w-md md:w-lg lg:min-w-4xl mx-auto">
+      <Card className="grid grid-cols-3 lg:grid-cols-4 w-md md:w-lg lg:min-w-4xl mx-auto">
         {Object.entries(productCategory).map(([categoryName, item]) => (
           <>
             <Card className="flex justify-center items-center rounded-full p-2 w-15 h-15 mx-auto bg-blue-100">
