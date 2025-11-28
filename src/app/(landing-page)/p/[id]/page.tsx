@@ -87,11 +87,11 @@ export default function Page() {
             <Breadcrumb className="mt-10 mb-3 ml-1">
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/">Início</BreadcrumbLink>
+                        <Link className="hover:bg-gray-800 hover:text-gray-50 duration-200 py-1 px-3 rounded-full" href={`/`}>Início</Link>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator></BreadcrumbSeparator>
                     <BreadcrumbItem>
-                        <BreadcrumbPage className="border-b-2 border-gray-500">Produto</BreadcrumbPage>
+                        <BreadcrumbPage className="hover:bg-gray-300 duration-200 py-1 px-3 rounded-full border-b-2">Produto</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
