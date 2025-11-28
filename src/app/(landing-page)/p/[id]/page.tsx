@@ -160,7 +160,7 @@ export default function Page() {
                             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
                                 {product.name}
                             </h1>
-                            <Button variant="ghost" size="icon" onClick={shareUrl} className="text-gray-600 hover:text-gray-900 transition-colors">
+                            <Button variant="ghost" size="icon" onClick={shareUrl} className="text-gray-600 cursor-copy hover:text-gray-900 transition-colors">
                                 <Share2 size={24} />
                             </Button>
                         </div>
@@ -171,9 +171,9 @@ export default function Page() {
                                     De: {formatCurrency(product.pricing.basePrice)}
                                 </span>
                             )}
-                            <p className="text-4xl font-extrabold text-red-600 flex items-baseline">
+                            <p className={`text-4xl font-extrabold flex items-baseline ${product.pricing.isPromotional === true ? "text-green-600" : "text-blue-600"}`}>
                                 {formatCurrency(finalPrice)}
-                                <span className="text-base font-semibold ml-2 text-gray-700">à vista no Pix</span>
+                                <span className={`text-base font-semibold ml-2 text-gray-700`}>à vista no Pix</span>
                             </p>
                             {product.pricing.basePrice > 100 && (
                                 <p className="text-sm text-gray-600 mt-1">
@@ -213,12 +213,12 @@ export default function Page() {
                         <div className="flex items-center gap-4 mt-2">
                             <span className="text-lg font-semibold text-gray-700">
                                 Em estoque: 
-                                <span className={clsx("font-bold ml-1", currentStock > 0 ? "text-green-600" : "text-red-600")}>
+                                <span className={clsx("font-bold ml-1", currentStock > 0 ? "text-gray-600" : "text-red-600")}>
                                     {currentStock}
                                 </span>
                             </span>
                             <Button 
-                                className="flex-1 text-lg py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01]" 
+                                className="flex-1 text-lg py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer" 
                                 disabled={isOutOfStock}
                             >
                                 <ShoppingCart className="mr-2 h-5 w-5" /> {isOutOfStock ? "Esgotado" : "Adicionar ao Carrinho"}

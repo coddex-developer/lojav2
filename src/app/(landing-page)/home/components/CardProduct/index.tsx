@@ -23,11 +23,12 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
       <Card
         key={id}
         className={clsx(
-          "min-h-80",
+          "min-h-75 flex flex-col gap-3 justify-between",
           "cursor-pointer",
           "hover:shadow-xl",
           "transition-all",
           "ease-in-out",
+          "py-3",
           "relative"
         )}
       >
@@ -40,8 +41,8 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
                 "z-1",
                 "rounded-full",
                 "absolute",
-                "left-1",
-                "-top-4",
+                "left-0.5",
+                "-top-2",
                 "flex",
                 "justify-center",
                 "items-center",
@@ -58,14 +59,14 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
                 alt="fire"
               />
               <span className="text-xs font-bold text-white">
-                {pricing.discountPercentage}% OFF
+                -{pricing.discountPercentage}% OFF
               </span>
             </div>
           ) : (
             ""
           )}
           <Image
-            className="w-full h-full transition-600 bg-cover bg-center"
+            className="w-full max-h-[130px]  md:max-h-[180] object-contain bg-center"
             src={media.images[0]}
             width={1080}
             height={720}
@@ -92,7 +93,7 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
               </p>
             </>
           ) : (
-            <p className="text-2xl font-bold text-gray-900">
+            <p className="text-2xl font-bold text-blue-600">
               {formatCurrency(pricing.basePrice)}
             </p>
           )}

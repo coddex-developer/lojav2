@@ -19,8 +19,8 @@ export default function ContainerCards({ description, icon, children }: ContentC
                     "sm:max-w-sm",
                     "md:max-w-md",
                     "lg:max-w-4xl",
-                    "px-2",
-                    "mt-8",
+                    "px-4",
+                    "mt-8"
                 )}
             >
                 <CardTitle className="text-lg font-bold flex gap-2 items-center">{icon} {description}</CardTitle>
@@ -28,7 +28,7 @@ export default function ContainerCards({ description, icon, children }: ContentC
                     className={clsx(
                         "grid",
                         "grid-cols-2",
-                        "gap-2",
+                        "gap-4",
                         "px-2",
                         "md:grid-cols-3",
                         "lg:grid-cols-4",
