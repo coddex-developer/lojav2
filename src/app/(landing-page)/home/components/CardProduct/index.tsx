@@ -59,7 +59,7 @@ export default function CardProduct({ id, name, pricing, media, props }: CardTyp
                 alt="fire"
               />
               <span className="text-xs font-bold text-white">
-                -{pricing.discountPercentage}% OFF
+                {pricing.discountPercentage}% OFF
               </span>
             </div>
           ) : (

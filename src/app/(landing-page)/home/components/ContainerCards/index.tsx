@@ -1,6 +1,6 @@
 import { Card, CardTitle } from "@/components/ui/card";
+import { products } from "@/db/products";
 import clsx from "clsx";
-import { Tag } from "lucide-react";
 
 type ContentCardProps = {
     description: string
@@ -9,6 +9,7 @@ type ContentCardProps = {
 }
 
 export default function ContainerCards({ description, icon, children }: ContentCardProps) {
+    
     return (
         <>
             <Card
