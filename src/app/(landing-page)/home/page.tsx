@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ProductType } from "@/db/ProductType";
 import { BadgePercent, Tag } from "lucide-react";
 import { CarouselComponent } from "./components/CarouselComponent";
-import CategoryComponent from "./components/CategoryComponent";
 import ContainerCards from "./components/ContainerCards";
 import CardProduct from "./components/CardProduct";
 
@@ -27,7 +26,6 @@ function HomePage() {
 return (
   <>
     <CarouselComponent />
-    <CategoryComponent />
     {/* AGRUPAR ITENS COM PROMOÇÃO */}
     <ContainerCards icon={<BadgePercent className="text-green-600" size={18} />} description="Produtos em promoção">
 
