@@ -85,7 +85,7 @@ export default function Page() {
         <div className="bg-gray-50 min-h-screen pt-10">
             {/* Detalhes do Produto Principal */}
             <Card className="max-w-6xl mx-auto p-4 md:p-8 shadow-lg border-0 bg-white">
-                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex flex-col lg:flex-row lg:justify-between gap-8">
                     
                     {/* Galeria de Imagens */}
                     <div className="w-full lg:w-1/2 flex gap-4">
@@ -210,7 +210,7 @@ export default function Page() {
                             <strong>Descrição:</strong> {product.description}
                         </CardDescription>
 
-                        <div className="flex items-center gap-4 mt-2">
+                        <div className="flex flex-col md:flex-row items-center gap-4 mt-2">
                             <span className="text-lg font-semibold text-gray-700">
                                 Em estoque: 
                                 <span className={clsx("font-bold ml-1", currentStock > 0 ? "text-gray-600" : "text-red-600")}>
@@ -218,7 +218,7 @@ export default function Page() {
                                 </span>
                             </span>
                             <Button 
-                                className="flex-1 text-lg py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer" 
+                                className="w-full flex-1 text-lg py-2 md:py-4 lg:py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer" 
                                 disabled={isOutOfStock}
                             >
                                 <ShoppingCart className="mr-2 h-5 w-5" /> {isOutOfStock ? "Esgotado" : "Adicionar ao Carrinho"}
