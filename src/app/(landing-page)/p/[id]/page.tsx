@@ -90,30 +90,10 @@ export default function Page() {
     const getProduct = (id: number) => {
         const productID = products.findIndex(item => item.id === +id)
         if (!productID) {
-            return toast.warn(`Falha ao tentar adicionar ${products[productID].name} ao carrinho!`, {
-                position: "top-center",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            })
+            return toast.warn(`Falha ao tentar adicionar ${products[productID].name} ao carrinho!`)
         }
 
-        toast.success(`${products[productID].name} adicionado com sucesso!`, {
-            position: "top-center",
-            autoClose: 4000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-        })
+        toast.success(`${products[productID].name} adicionado com sucesso!`)
         memoryCar.push(products[productID])
     }
 
