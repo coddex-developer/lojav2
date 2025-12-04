@@ -1,36 +1,33 @@
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarGroup,
+    SidebarGroupContent,
+    SidebarGroupLabel,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+} from "@/components/ui/sidebar"
 
+import {
+    Calendar,
+    Home,
+    Inbox,
+    Search,
+    Settings,
+    ShoppingBasket
+} from "lucide-react"
 
 import Link from "next/link"
 
-// Menu items.
-const items = [
-    {
-        title: "Home",
-        url: "/",
-        icon: Home,
-    },
-    {
-        title: "Inbox",
-        url: "#",
-        icon: Inbox,
-    },
-    {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
-    },
-    {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
-    },
+// Menu items
+const menuItems = [
+    { title: "Home", url: "/", icon: Home },
+    { title: "Carrinho", url: "/carrinho", icon: ShoppingBasket },
+    { title: "Inbox", url: "#", icon: Inbox },
+    { title: "Calendário", url: "#", icon: Calendar },
+    { title: "Buscar", url: "#", icon: Search },
+    { title: "Configurações", url: "#", icon: Settings },
 ]
 
 export default function AppSidebar() {
@@ -39,13 +36,14 @@ export default function AppSidebar() {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>Estação Clima</SidebarGroupLabel>
+
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {items.map((item) => (
+                            {menuItems.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <Link href={item.url}>
-                                            <item.icon />
+                                            <item.icon className="w-4 h-4" />
                                             <span>{item.title}</span>
                                         </Link>
                                     </SidebarMenuButton>

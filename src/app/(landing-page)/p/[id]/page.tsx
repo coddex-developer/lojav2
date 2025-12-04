@@ -13,9 +13,9 @@ import Link from "next/link";
 import { ProductType } from "@/db/ProductType"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { Bounce, toast, ToastContainer } from 'react-toastify'
-// Função utilitária para pegar N produtos aleatórios
+
 const getRandomProducts = (allProducts: ProductType[], currentProductId: number | string, count: number): ProductType[] => {
-    // Se o ID não for válido, retorna lista vazia para evitar erro
+
     if (!currentProductId) return [];
 
     const availableProducts = allProducts.filter(p => p.id !== +currentProductId);
@@ -28,19 +28,16 @@ const getRandomProducts = (allProducts: ProductType[], currentProductId: number 
 
 export default function Page() {
     const { id } = useParams();
+    const memoryCar = []
 
-    // 1. Calcular os dados BÁSICOS primeiro (sem retornar nada ainda)
     const productId = id ? +id : null;
     const product = products.find(item => item.id === productId);
 
-    // 2. Declarar HOOKS incondicionalmente (Sempre são chamados, independente se existe produto ou não)
-    // Usamos o operador ?. (optional chaining) para evitar erro se product for undefined
     const [selectedImage, setSelectedImage] = useState<string | undefined>(product?.media?.images?.[0]);
     const [selectedVariant, setSelectedVariant] = useState(
         product?.variants && product.variants.length > 0 ? product.variants[0] : null
     );
 
-    // useEffect: Se o usuário mudar de página (/p/1 para /p/2), atualizamos o estado
     useEffect(() => {
         if (product) {
             setSelectedImage(product?.media?.images?.[0]);
@@ -48,7 +45,6 @@ export default function Page() {
         }
     }, [product]);
 
-    // 3. AGORA sim podemos fazer os "Early Returns" (Retornos antecipados)
     if (!productId || !product) {
         return (
             <div className="text-center mt-20 text-xl font-bold text-gray-700">
@@ -57,7 +53,6 @@ export default function Page() {
         );
     }
 
-    // 4. Lógica restante (só executa se o produto existir)
     const randomProducts = getRandomProducts(products, productId, 6);
 
     const shareUrl = () => {
@@ -89,8 +84,38 @@ export default function Page() {
     const currentStock = selectedVariant ? selectedVariant.stockQuantity : product.inventory.stockQuantity;
     const isOutOfStock = currentStock === 0;
 
-    // Garantir que selectedImage tenha valor (fallback para a primeira imagem se o estado falhar)
     const displayImage = selectedImage || product.media.images[0];
+
+
+    const getProduct = (id: number) => {
+        const productID = products.findIndex(item => item.id === +id)
+        if (!productID) {
+            return toast.warn(`Falha ao tentar adicionar ${products[productID].name} ao carrinho!`, {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+        }
+
+        toast.success(`${products[productID].name} adicionado com sucesso!`, {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
+        memoryCar.push(products[productID])
+    }
 
     return (
         <>
@@ -240,7 +265,8 @@ export default function Page() {
                                         {currentStock}
                                     </span>
                                 </span>
-                                <Button                                
+                                <Button
+                                    onClick={() => getProduct(product.id)}
                                     className="w-full flex-1 text-lg py-2 md:py-5 lg:py-6 bg-blue-600 hover:bg-blue-700 font-bold shadow-lg transition-transform hover:scale-[1.01] cursor-pointer"
                                     disabled={isOutOfStock}
                                 >
